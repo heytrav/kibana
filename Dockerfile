@@ -38,7 +38,6 @@ RUN \
   cd /opt && tar xzf kibana-$KIBANA_VERSION.tar.gz && \
   ln -s /opt/kibana-$KIBANA_VERSION /var/www/kibana && \
   sed -i 's/9200"/"+ window.location.port/g' /var/www/kibana/config.js && \
-  sed -i 's/"http:/"https:/g' /var/www/kibana/config.js && \
   rm kibana-$KIBANA_VERSION.tar.gz
 
 ADD supervisord.conf /etc/supervisor/conf.d/
