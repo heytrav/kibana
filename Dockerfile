@@ -28,8 +28,8 @@ RUN \
 ADD supervisord.conf /etc/supervisor/conf.d/
 
 
-WORKDIR /usr/local/kibana
-ADD docker_start.sh /usr/local/kibana/
+WORKDIR /usr/local
+ADD docker_start.sh /usr/local/
 EXPOSE 22 
 
 CMD ["./docker_start.sh"]
