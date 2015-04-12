@@ -28,7 +28,6 @@ ADD supervisord.conf /etc/supervisor/conf.d/
 
 WORKDIR /data
 
-VOLUME ["/opt/kibana-3.1.2/app/dashboards"]
 
 EXPOSE 22 
 
