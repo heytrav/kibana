@@ -15,13 +15,14 @@ RUN \
                       openssh-server && \
   apt-get clean && \
   mkdir -p /var/run/sshd && \
+  mkdir -p /opt/kibana && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Kibana and Configure Nginx
 
-ADD https://download.elasticsearch.org/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt/
+ADD https://download.elasticsearch.org/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt/kibana
 RUN \
-  cd /opt && tar xzf kibana-$KIBANA_VERSION.tar.gz && \
+  cd /opt/kibana && tar xzf kibana-$KIBANA_VERSION.tar.gz --strip-components=1 && \
   rm kibana-$KIBANA_VERSION.tar.gz
 
 ADD supervisord.conf /etc/supervisor/conf.d/
