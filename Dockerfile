@@ -44,4 +44,4 @@ VOLUME ["/etc/nginx"]
 
 EXPOSE 22 
 
-CMD ["/usr/bin/supervisord"]
+CMD ["./docker_start.sh"]
