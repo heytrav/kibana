@@ -20,10 +20,10 @@ RUN \
 
 # Install Kibana and Configure Nginx
 
-ADD https://download.elasticsearch.org/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt/kibana
+ADD https://download.elasticsearch.org/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt
 RUN \
-  cd /opt/kibana && tar xzf kibana-$KIBANA_VERSION.tar.gz --strip-components=1 && \
-  rm kibana-$KIBANA_VERSION.tar.gz
+  cd /opt/kibana && tar xzf /opt/kibana-$KIBANA_VERSION.tar.gz --strip-components=1 && \
+  rm -f /opt/kibana-$KIBANA_VERSION.tar.gz
 
 ADD supervisord.conf /etc/supervisor/conf.d/
 
