@@ -10,18 +10,13 @@ ENV KIBANA_VERSION 3.1.2
 # Install Required Dependancies
 RUN \
   apt-get -qq update && \
-  apt-get -qy install wget --no-install-recommends && \
-  wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
-  echo 'deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main' \
-    >> /etc/apt/sources.list && \
-  echo 'deb http://packages.elasticsearch.org/logstash/1.4/debian stable main' \
-    >> /etc/apt/sources.list && \
-  apt-get -qq update && \
   apt-get -qy install supervisor \
                       nginx \
                       curl \
-                      unzip && \
+                      unzip \
+                      openssh-server && \
   apt-get clean && \
+  mkdir -p /var/run/sshd && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Kibana and Configure Nginx
@@ -47,6 +42,6 @@ WORKDIR /data
 VOLUME ["/opt/kibana-3.1.2/app/dashboards"]
 VOLUME ["/etc/nginx"]
 
-EXPOSE 80 443
+EXPOSE 22 
 
 CMD ["/usr/bin/supervisord"]
