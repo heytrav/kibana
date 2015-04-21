@@ -5,7 +5,7 @@ MAINTAINER Travis Holton <travis@ideegeo.com>
 RUN echo '#!/bin/sh\nexit 101' > /usr/sbin/policy-rc.d && \
     chmod +x /usr/sbin/policy-rc.d
 
-ENV KIBANA_VERSION 4.0.1-linux-x64
+ENV KIBANA_VERSION 4.0.2-linux-x64
 
 # Install Required Dependancies
 RUN \
