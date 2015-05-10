@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SSH_PASSWORD=`perl -MJSON::PP -e 'print decode_json(qx{curl --cacert /etc/ssl/etcd/ca.pem --cert /etc/ssl/etcd/server.crt --key /etc/ssl/etcd/server.key -L $ENV{ETCD_SERVICE}/v2/keys/iwmn/kibana/ssh_password})->{node}->{value};'`
+#SSH_PASSWORD=`perl -MJSON::PP -e 'print decode_json(qx{curl --cacert /etc/ssl/etcd/ca.pem --cert /etc/ssl/etcd/server.crt --key /etc/ssl/etcd/server.key -L $ENV{ETCD_SERVICE}/v2/keys/iwmn/kibana/ssh_password})->{node}->{value};'`
 
 if [ -n "$SSH_PASSWORD" ]; then
     echo "Configuring ssh: setting root password to ${SSH_PASSWORD}"
